@@ -1,30 +1,48 @@
-# Teste Técnico - Frontend
+# Layout Login com Toggle de Tema
+## Descrição
 
-## Tela de Login Urgente
+Este projeto é um layout para login de usuários com a funcionalidade de alternar entre os modos escuro e claro. A escolha do tema é armazenada no cache local, proporcionando uma experiência personalizada para o usuário.
 
-### Simulação
+### Modo Claro
+![image](https://github.com/user-attachments/assets/d44899c9-9a8d-4824-b245-280425facd1f)
 
-**O problema:**  
-O time de marketing precisa urgentemente acessar algumas imagens que são propriedade exclusiva do time de UX.
+### Modo Escuro
+![image](https://github.com/user-attachments/assets/95c0e79a-d430-4ddb-931f-c61f11276f8a)
 
-O time de backend já realizou todos os trâmites necessários e agora precisa apenas que a equipe de frontend envie uma requisição com as seguintes informações:
 
-```json
-{
-    "nome": "",
-    "usuario": "",
-    "senha": "",
-    "dataDeAcesso": "",
-    "ip": ""
-}
+## Tecnologias Utilizadas
 
-**Solução:**
+- **HTML**: Estrutura da página.
+- **CSS**: Estilização e layout da página.
+- **JS**: Capturar data, IP e verificação nos campos
 
-- Crie uma pasta com seu nome e data
-- Realize todo o processo nessa pasta
-- Usar algum framework vai ser um diferencial
-- Usar Containers também é um diferencial
+## Funcionalidades
 
- **Regras de commit**
-- crie uma banch com seu nome a partir da branch dev
-- PR deve ser realizado para a branch dev
+- Alternância entre modo escuro e claro.
+- Armazenamento da escolha do tema no cache local.
+
+## Instalação
+
+Para utilizar este projeto localmente, siga os passos abaixo:
+
+1. Clone o repositório:
+    ```sh
+    git clone https://github.com/rhyan05/Layout-Login---Toggle-de-tema.git
+    ```
+2. Navegue até o diretório do projeto:
+    ```sh
+    cd Layout-Login---Toggle-de-tema
+    ```
+3. Abra o arquivo `index.html` no seu navegador de preferência.
+
+## Como Usar
+
+1. Abra o arquivo `index.html` em um navegador.
+2. Utilize o formulário de login fornecido.
+3. Alterne entre os modos escuro e claro utilizando o botão de alternância no topo da página.
+
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests ou abrir issues para melhorias e correções.
+
+Feito com ❤️ por Rhyan
