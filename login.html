@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="user.png" type="image/png">
+  <link rel="stylesheet" href="login.css">
+  <title>Desafio Animalesko</title>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle">🌙 Modo Escuro</button>
+
+  <div class="container">
+    <div class="form">
+      <div class="form-title">
+        <h1>Login</h1>
+        <div class="cadastrar-button">
+          <button><a href="#">Cadastrar</a></button>
+        </div>
+      </div>
+      <form action="#" method="post">
+        <div class="input-group">
+          <div class="input-box">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo"  title="Preencha esse campo com seu Nome">
+            
+          </div>
+          <div class="input-box">
+            <label for="usuario">Usuário</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Digite seu nome de usuário"  title="Preencha esse campo com seu Usuário">
+          </div>
+          <div class="input-box">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha"  title="Preencha esse campo com sua Senha">
+          </div>
+
+          <div class="btn-login">
+            <button type="submit"><a href="#">Login</a></button>
+          </div>
+
+          <input type="hidden" id="dataDeAcesso" name="dataDeAcesso">
+          <input type="hidden" id="ip" name="ip">
+        </div>
+      </form>
+      <div id="message" class="message-box" style="display: none;"></div>
+    </div>
+  </div>
+
+  <script>
+    // DataDeAcesso
+    window.addEventListener('DOMContentLoaded', function () {
+      const dataDeAcessoInput = document.getElementById('dataDeAcesso');
+      const currentDate = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+      dataDeAcessoInput.value = currentDate;
+      
+    // Buscar IP público atual user
+    fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('ip').value = data.ip;
+    })
+    .catch(error => {
+        console.error('Erro ao buscar IP:', error);
+    });
+
+    // Validação do formulário
+  const form = document.querySelector('form');
+  const messageBox = document.getElementById('message');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    // Verifica se todos os campos estão preenchidos
+    const inputs = form.querySelectorAll('input');
+    let allFilled = true;
+
+    inputs.forEach(input => {
+      if (input.value.trim() === '') {
+        allFilled = false;
+      }
+    });
+
+    if (!allFilled) {
+      showMessage('Preencha todos os campos', 'error');
+    } else {
+      showMessage('Login efetuado com sucesso', 'success');
+
+    }
+  });
+
+  function showMessage(msg, type) {
+    messageBox.textContent = msg;
+    messageBox.className = `message-box ${type}`;
+    messageBox.style.display = 'block';
+
+    setTimeout(() => {
+      messageBox.style.display = 'none';
+    }, 3000);
+  }
+
+      // Modo escuro
+      const toggleBtn = document.getElementById('theme-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme'); // salva o tema no localStorage
+
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark-mode');
+        toggleBtn.textContent = '☀️ Modo Claro';
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode'); // Muda modo escuro para claro
+        const isDark = document.body.classList.contains('dark-mode');
+        toggleBtn.textContent = isDark ? '☀️ Modo Claro' : '🌙 Modo Escuro';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        
+      });
+    });
+    
+  </script>
+</body>
+</html>
